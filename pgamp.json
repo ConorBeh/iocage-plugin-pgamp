@@ -1,5 +1,5 @@
 {
-  "name": "ixplamp",
+  "name": "pgamp",
   "release": "11.2-RELEASE",
   "artifact": "https://github.com/miwi-fbsd/iocage-plugin-ixplamp.git",
   "pkgs": [
