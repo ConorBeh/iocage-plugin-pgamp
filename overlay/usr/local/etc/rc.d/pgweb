@@ -1,0 +1,29 @@
+#!/bin/sh
+
+
+# PROVIDE: pgweb
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+
+# Add the following line to /etc/rc.conf to enable PGWeb:
+#
+#  pgweb_enable="YES"
+
+PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
+
+. /etc/rc.subr
+
+name="pgweb"
+rcvar=pgweb_enable
+
+start_cmd="${name}_start"
+stop_cmd=":"
+
+pgweb_start()
+{
+	pgweb --bind 0.0.0.0 --user postgres >> /var/log/pgweb.log &
+}
+
+load_rc_config $name
+: ${pgweb_enable:="NO"}
+run_rc_command "$1"
